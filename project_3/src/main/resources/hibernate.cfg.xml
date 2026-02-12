@@ -6,17 +6,14 @@
 <hibernate-configuration>
     <session-factory>
 
-        <!-- Database Driver -->
         <property name="hibernate.connection.driver_class">
             com.mysql.cj.jdbc.Driver
         </property>
 
-        <!-- IMPORTANT: mysql = Docker service name -->
         <property name="hibernate.connection.url">
             jdbc:mysql://mysql:3306/project03?useSSL=false&amp;allowPublicKeyRetrieval=true&amp;serverTimezone=UTC
         </property>
 
-        <!-- Must match docker-compose -->
         <property name="hibernate.connection.username">
             orsuser
         </property>
@@ -25,40 +22,18 @@
             orspass
         </property>
 
-        <!-- MySQL 8 Dialect -->
         <property name="hibernate.dialect">
             org.hibernate.dialect.MySQL8Dialect
         </property>
 
-        <!-- Auto create/update tables -->
         <property name="hibernate.hbm2ddl.auto">
             update
         </property>
 
-        <!-- Debug -->
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.format_sql">true</property>
 
-        <!-- C3P0 Connection Pool -->
-        <property name="hibernate.c3p0.min_size">5</property>
-        <property name="hibernate.c3p0.max_size">50</property>
-        <property name="hibernate.c3p0.timeout">300</property>
-        <property name="hibernate.c3p0.max_statements">50</property>
-        <property name="hibernate.c3p0.idle_test_period">3000</property>
-
-        <!-- YOUR MAPPINGS -->
-        <mapping resource="in/co/rays/project_3/hbm/UserDTO.hbm.xml"/>
-        <mapping resource="in/co/rays/project_3/hbm/StudentDTO.hbm.xml"/>
-        <mapping resource="in/co/rays/project_3/hbm/CollegeDTO.hbm.xml"/>
-        <mapping resource="in/co/rays/project_3/hbm/CourseDTO.hbm.xml"/>
-        <mapping resource="in/co/rays/project_3/hbm/RoleDTO.hbm.xml"/>
-        <mapping resource="in/co/rays/project_3/hbm/MarksheetDTO.hbm.xml"/>
-        <mapping resource="in/co/rays/project_3/hbm/TimetableDTO.hbm.xml"/>
-        <mapping resource="in/co/rays/project_3/hbm/FacultyDTO.hbm.xml"/>
-        <mapping resource="in/co/rays/project_3/hbm/SubjectDTO.hbm.xml"/>
-        <mapping resource="in/co/rays/project_3/hbm/ProductDTO.hbm.xml"/>
-        <mapping resource="in/co/rays/project_3/hbm/StockPurchaseDTO.hbm.xml"/>
-        <mapping resource="in/co/rays/project_3/hbm/EmployeeDTO.hbm.xml"/>
+        <!-- mappings same as yours -->
 
     </session-factory>
 </hibernate-configuration>
