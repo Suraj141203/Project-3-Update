@@ -4,7 +4,7 @@ services:
 
   mysql:
     image: mysql:8.0
-    container_name: ors_mysql
+    container_name: ors-mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
