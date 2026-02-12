@@ -1,29 +1,47 @@
-version: '3'
+version: '3.8'
+
 services:
+
   mysql:
     image: mysql:8.0
-    container_name: ORS_Project3-mysql
+    container_name: ors_mysql
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: pro3
+      MYSQL_USER: pro3user
+      MYSQL_PASSWORD: pro3pass
     ports:
       - "3308:3306"
-    networks:
-      - mynetwork
     volumes:
-      - ./mysql-data:/var/lib/mysql
+      - mysql_data:/var/lib/mysql
+    networks:
+      - ors_network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   webapp:
-    build:
-      context: .
-    container_name: ORS_Project3-webapp
+    build: .
+    container_name: ors_webapp
+    restart: always
+    depends_on:
+      mysql:
+        condition: service_healthy
     ports:
       - "8080:8080"
     networks:
-      - mynetwork
-    depends_on:
-      - mysql
+      - ors_network
     environment:
-      - DATABASE_URL=jdbc:mysql://mysql:3306/pro3
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/pro3
+      SPRING_DATASOURCE_USERNAME: pro3user
+      SPRING_DATASOURCE_PASSWORD: pro3pass
+
 networks:
-  mynetwork:
+  ors_network:
     driver: bridge
+
+volumes:
+  mysql_data:
