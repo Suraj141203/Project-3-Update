@@ -34,10 +34,6 @@ services:
       - "8080:8080"
     networks:
       - ors_network
-    environment:
-      SPRING_DATASOURCE_URL: jdbc:mysql://mysql:3306/pro3
-      SPRING_DATASOURCE_USERNAME: pro3user
-      SPRING_DATASOURCE_PASSWORD: pro3pass
 
 networks:
   ors_network:
