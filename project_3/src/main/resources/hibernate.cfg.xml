@@ -10,7 +10,7 @@
         </property>
 
         <property name="hibernate.connection.url">
-            jdbc:mysql://mysql:3306/pro3
+            jdbc:mysql://mysql:3306/project03
         </property>
 
         <property name="hibernate.connection.username">
