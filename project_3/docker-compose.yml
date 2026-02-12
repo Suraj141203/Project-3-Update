@@ -6,6 +6,7 @@ services:
     image: mysql:8.0
     container_name: ors_mysql
     restart: always
+    command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: project03
@@ -24,6 +25,7 @@ services:
       retries: 5
 
   webapp:
+    image: project3-app:latest
     build: .
     container_name: ors_webapp
     restart: always
