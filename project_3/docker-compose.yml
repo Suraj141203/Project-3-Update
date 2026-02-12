@@ -7,7 +7,7 @@ services:
     container_name: ors_mysql
     restart: always
     environment:
-       MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: root
       MYSQL_DATABASE: project03
       MYSQL_USER: orsuser
       MYSQL_PASSWORD: orspass
